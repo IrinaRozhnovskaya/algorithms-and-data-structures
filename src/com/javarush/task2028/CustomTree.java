@@ -3,11 +3,8 @@ package com.javarush.task2028;
 import java.io.Serializable;
 import java.util.*;
 
-/*
-Построй дерево
-*/
 public class CustomTree extends AbstractList<String> implements Cloneable, Serializable {
-    //Entry<String> root;
+    static final long serialVersionUID = 1891216657129531613L;
     Entry<String> root = new Entry<>("0");
 
     static class Entry<T> implements Serializable {
@@ -32,15 +29,7 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
             return availableToAddLeftChildren || availableToAddRightChildren;
         }
     }
-    public static void main(String[] args) {
-        List<String> list = new CustomTree();
-        for (int i = 1; i < 16; i++) {
-            list.add(String.valueOf(i));
-        }
-        System.out.println("Expected 3, actual is " + ((CustomTree) list).getParent("8"));
-        list.remove("5");
-        System.out.println("Expected null, actual is " + ((CustomTree) list).getParent("11"));
-    }
+
     @Override
     public boolean add(String s) {
         Queue<Entry<String>> queue = new LinkedList<>();
